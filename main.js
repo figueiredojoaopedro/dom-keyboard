@@ -20,6 +20,13 @@ function playNote(event){
     // play audio
     playAudio(audioKeyCode)
 }
+function addPlayingClass(key){
+    key.classList.add('playing')
+}
+
+function removePlayingClass(event){
+    event.target.classList.remove("playing")
+}
 
 function playAudio(audioKeyCode){
     const audio = document.querySelector(`audio[data-key="${audioKeyCode}"]`)
@@ -45,6 +52,7 @@ function getKeyCode(event){
 // click with mouse
 keys.forEach(function(key){
     key.addEventListener("click", playNote)
+    key.addEventListener("transitionend",removePlayingClass)
 })
 
 // keyboard type
